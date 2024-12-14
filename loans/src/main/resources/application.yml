@@ -14,3 +14,23 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+  config:
+    import:
+      - "application_qa.yml"
+      - "application_prod.yml"
+
+  profiles:
+    active: "prod"
+
+build:
+  version: "7.0"
+
+loans:
+  message: "Welcome to EazyBank loans related local APIs"
+  contactDetails:
+    name: "John Doe - loans Developer"
+    email: "johnLoans@eazybank.com"
+  onCallSupport:
+    - (777) 777-1234
+    - (777) 777-4321
