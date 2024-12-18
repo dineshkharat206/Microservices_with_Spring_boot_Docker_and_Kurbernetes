@@ -1,0 +1,11 @@
+build:
+  version: "9.0"
+
+loans:
+  message: "Welcome to EazyBank loans related prod APIs"
+  contactDetails:
+    name: "Reine Aishwarya - loans Product Owner"
+    email: "aishwaryaLoans@eazybank.com"
+  onCallSupport:
+    - (999) 999-4829
+    - (999) 999-0384
