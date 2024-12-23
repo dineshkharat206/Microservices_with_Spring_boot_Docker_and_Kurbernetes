@@ -21,3 +21,11 @@ spring:
       ddl-auto: update
   config:
     import: "optional:configserver:http://localhost:8071/"
+
+
+# Enable the actuator API paths
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
