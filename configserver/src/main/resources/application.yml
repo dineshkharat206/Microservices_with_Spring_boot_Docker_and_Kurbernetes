@@ -2,13 +2,23 @@ spring:
   application:
     name: "configserver"
   profiles:
-    active: native
+    #active: native
+    active: git
   cloud:
     config:
       server:
-        native:
-          search-locations: "classpath:/config "
+        #native:
+          # search-locations: "classpath:/config"
+          #search-locations: "file:///Users//dineshkharat//Documents//Udemy_Courses//config"
+        git:
+          uri: "https://github.com/dineshkharat206/microservices-config.git"
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
 
+encrypt:
+  key: "45D81EC1EF61DF9AD8D3E5BB397F9"
 
 
 server:
