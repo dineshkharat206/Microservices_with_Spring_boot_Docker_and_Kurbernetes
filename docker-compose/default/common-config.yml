@@ -12,6 +12,8 @@ services:
       resources:
         limits:
           memory: 700m
+    environment:
+      SPRING_RABBITMQ_HOST: "rabbit"
 
   microservice-configserver-config:
     # Any MS inside our application which depends on configserver will extend this service.
