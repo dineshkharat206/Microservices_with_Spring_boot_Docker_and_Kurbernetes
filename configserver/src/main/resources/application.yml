@@ -16,12 +16,12 @@ spring:
           timeout: 5
           clone-on-start: true
           force-pull: true
-
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
+#  Temporary removing this config for section 7 as we want ot run the MS locally
+#  rabbitmq:
+#    host: "localhost"
+#    port: 5672
+#    username: "guest"
+#    password: "guest"
 
 management:
   endpoints:
