@@ -44,7 +44,7 @@ services:
 #      service: network-deploy-service
 
   configserver:
-    image: "dineshlk620/configserver:s7"
+    image: "dineshlk620/configserver:s8"
     container_name: configserver-ms
     ports:
       - "8071:8071"
@@ -62,7 +62,7 @@ services:
       service: microservice-base-config
 
   accounts:
-    image: "dineshlk620/accounts:s7"
+    image: "dineshlk620/accounts:s8"
     container_name: accounts-ms
     ports:
       - "8080:8080"
@@ -79,7 +79,7 @@ services:
       service: microservice-configserver-config
 
   loans:
-    image: "dineshlk620/loans:s7"
+    image: "dineshlk620/loans:s8"
     container_name: loans-ms
     ports:
       - "8090:8090"
@@ -96,7 +96,7 @@ services:
       service: microservice-configserver-config
 
   cards:
-    image: "dineshlk620/cards:s7"
+    image: "dineshlk620/cards:s8"
     container_name: cards-ms
     ports:
       - "9000:9000"
