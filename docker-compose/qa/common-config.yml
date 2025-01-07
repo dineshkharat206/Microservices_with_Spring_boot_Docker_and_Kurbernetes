@@ -25,15 +25,28 @@ services:
       resources:
         limits:
           memory: 700m
-#    environment:
-#      SPRING_RABBITMQ_HOST: "rabbit"
+  #    environment:
+  #      SPRING_RABBITMQ_HOST: "rabbit"
 
   microservice-configserver-config:
     # Any MS inside our application which depends on configserver will extend this service.
     extends:
       service: microservice-base-config
+    depends_on:
+      configserver:
+        condition: service_healthy
     environment:
       SPRING_PROFILES_ACTIVE: qa
       SPRING_CONFIG_IMPORT: configserver:http://configserver:8071
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
+
+  microservice-eurekaserver-config:
+    # Any MS inside our application which depends on configserver will extend this service.
+    extends:
+      service: microservice-configserver-config
+    depends_on:
+      eurekaserver:
+        condition: service_healthy
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/

@@ -44,7 +44,7 @@ services:
   #      service: network-deploy-service
 
   configserver:
-    image: "dineshlk620/configserver:s7"
+    image: "dineshlk620/configserver:s8"
     container_name: configserver-ms
     ports:
       - "8071:8071"
@@ -61,8 +61,28 @@ services:
       file: common-config.yml
       service: microservice-base-config
 
+  eurekaserver:
+    image: "dineshlk620/eurekaserver:s8"
+    container_name: eurekaserver-ms
+    ports:
+      - "8070:8070"
+    #    depends_on:
+    #      rabbit:
+    #        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "eurekaserver"
+    healthcheck:
+      test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
   accounts:
-    image: "dineshlk620/accounts:s7"
+    image: "dineshlk620/accounts:s8"
     container_name: accounts-ms
     ports:
       - "8080:8080"
@@ -76,10 +96,10 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:mysql://accountsdb:3306/accountsdb"
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eurekaserver-config
 
   loans:
-    image: "dineshlk620/loans:s7"
+    image: "dineshlk620/loans:s8"
     container_name: loans-ms
     ports:
       - "8090:8090"
@@ -93,10 +113,10 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:mysql://loansdb:3306/loansdb"
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eurekaserver-config
 
   cards:
-    image: "dineshlk620/cards:s7"
+    image: "dineshlk620/cards:s8"
     container_name: cards-ms
     ports:
       - "9000:9000"
@@ -110,7 +130,7 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:mysql://cardsdb:3306/cardsdb"
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eurekaserver-config
 
 networks:
   eazybank:
