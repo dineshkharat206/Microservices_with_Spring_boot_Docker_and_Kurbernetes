@@ -1,33 +1,35 @@
 services:
-  accountsdb:
-    container_name: accountsdb
-    ports:
-      - "3307:3306"
-    environment:
-      MYSQL_DATABASE: accountsdb
-    extends:
-      file: common-config.yml
-      service: microservice-db-config
-
-  cardsdb:
-    container_name: cardsdb
-    ports:
-      - "3309:3306"
-    environment:
-      MYSQL_DATABASE: cardsdb
-    extends:
-      file: common-config.yml
-      service: microservice-db-config
-
-  loansdb:
-    container_name: loansdb
-    ports:
-      - "3308:3306"
-    environment:
-      MYSQL_DATABASE: loansdb
-    extends:
-      file: common-config.yml
-      service: microservice-db-config
+  ############ MYSQL DBs ############
+#  accountsdb:
+#    container_name: accountsdb
+#    ports:
+#      - "3307:3306"
+#    environment:
+#      MYSQL_DATABASE: accountsdb
+#    extends:
+#      file: common-config.yml
+#      service: microservice-db-config
+#
+#  cardsdb:
+#    container_name: cardsdb
+#    ports:
+#      - "3309:3306"
+#    environment:
+#      MYSQL_DATABASE: cardsdb
+#    extends:
+#      file: common-config.yml
+#      service: microservice-db-config
+#
+#  loansdb:
+#    container_name: loansdb
+#    ports:
+#      - "3308:3306"
+#    environment:
+#      MYSQL_DATABASE: loansdb
+#    extends:
+#      file: common-config.yml
+#      service: microservice-db-config
+#########################################
 #  rabbit:
 #    image: rabbitmq:4.0-management
 #    ports:
@@ -89,11 +91,11 @@ services:
     depends_on:
       configserver:
         condition: service_healthy
-      accountsdb:
-        condition: service_healthy
+#      accountsdb:
+#        condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "accounts"
-      SPRING_DATASOURCE_URL: "jdbc:mysql://accountsdb:3306/accountsdb"
+#      SPRING_DATASOURCE_URL: "jdbc:mysql://accountsdb:3306/accountsdb"
     extends:
       file: common-config.yml
       service: microservice-eurekaserver-config
@@ -106,11 +108,11 @@ services:
     depends_on:
       configserver:
         condition: service_healthy
-      loansdb:
-        condition: service_healthy
+#      loansdb:
+#        condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "loans"
-      SPRING_DATASOURCE_URL: "jdbc:mysql://loansdb:3306/loansdb"
+#      SPRING_DATASOURCE_URL: "jdbc:mysql://loansdb:3306/loansdb"
     extends:
       file: common-config.yml
       service: microservice-eurekaserver-config
@@ -123,11 +125,11 @@ services:
     depends_on:
       configserver:
         condition: service_healthy
-      cardsdb:
-        condition: service_healthy
+#      cardsdb:
+#        condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "cards"
-      SPRING_DATASOURCE_URL: "jdbc:mysql://cardsdb:3306/cardsdb"
+#      SPRING_DATASOURCE_URL: "jdbc:mysql://cardsdb:3306/cardsdb"
     extends:
       file: common-config.yml
       service: microservice-eurekaserver-config
