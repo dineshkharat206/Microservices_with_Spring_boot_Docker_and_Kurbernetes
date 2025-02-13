@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: "gatewayServer"
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+    # Config to connect with the eureka and get the MS details
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+
+# Enable the actuator API paths
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  # Config to enable the gateway related endpoints for actuator
+  endpoint:
+    gateway:
+      access: unrestricted
+  info:
+    env:
+      enabled: true
+
+# information to view in the eureka dashboard
+info:
+  app:
+    description: "Eazy Bank Gateway Server Application"
+    name: "gatewayServer"
+    version: "1.0.0"

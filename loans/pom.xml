@@ -114,7 +114,7 @@
 				<version>3.4.4</version>
 				<configuration>
 					<to>
-						<image>dineshlk620/${project.artifactId}:s8</image>
+						<image>dineshlk620/${project.artifactId}:s9</image>
 					</to>
 				</configuration>
 			</plugin>
