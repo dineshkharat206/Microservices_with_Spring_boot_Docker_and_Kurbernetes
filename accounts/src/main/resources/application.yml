@@ -72,3 +72,9 @@ info:
     description: "Eazy Bank Accounts Application"
     name: "accounts"
     version: "1.0.0"
+
+logging:
+  level:
+    com:
+      eazybytes:
+        accounts: DEBUG
