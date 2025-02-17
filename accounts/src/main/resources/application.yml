@@ -31,7 +31,10 @@ spring:
     show-sql: true
   config:
     import: "optional:configserver:http://localhost:8071/"
-
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
 #    Temporary removing this config for section 7 as we want ot run the MS locally
 #  rabbitmq:
 #    host: "localhost"
@@ -86,3 +89,11 @@ logging:
     com:
       eazybytes:
         accounts: DEBUG
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
