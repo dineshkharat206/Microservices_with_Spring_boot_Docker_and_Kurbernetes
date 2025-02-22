@@ -105,3 +105,7 @@ resilience4j.retry:
       waitDuration: 500
       enableExponentialBackoff: true
       exponentialMultiplier: 2
+      ignoreExceptions:
+        - java.lang.NullPointerException
+      retryExceptions:
+        - java.util.concurrent.TimeoutException
