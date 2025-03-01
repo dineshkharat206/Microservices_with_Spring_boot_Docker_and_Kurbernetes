@@ -29,7 +29,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2024.0.0</spring-cloud.version>
-		<otelVersion>2.13.1</otelVersion>
+		<otelVersion>1.33.5</otelVersion>
 	</properties>
 	<dependencies>
 		<dependency>

@@ -150,7 +150,7 @@ services:
       service: network-deploy-service
 
   tempo:
-    image: grafana/tempo
+    image: grafana/tempo:2.4.2
     container_name: tempo
     command: -config.file /etc/tempo-config.yml
     ports:
@@ -283,9 +283,9 @@ services:
 #        condition: service_healthy
     healthcheck:
       test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
-      interval: 10s
+      interval: 20s
       timeout: 5s
-      retries: 10
+      retries: 20
       start_period: 10s
     extends:
       file: common-config.yml
@@ -306,9 +306,9 @@ services:
       OTEL_SERVICE_NAME: " eurekaserver"
     healthcheck:
       test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
-      interval: 10s
+      interval: 20s
       timeout: 5s
-      retries: 10
+      retries: 20
       start_period: 10s
     extends:
       file: common-config.yml
@@ -321,9 +321,9 @@ services:
       - "8080:8080"
     healthcheck:
       test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
-      interval: 10s
+      interval: 20s
       timeout: 5s
-      retries: 10
+      retries: 20
       start_period: 10s
 #      accountsdb:
 #        condition: service_healthy
@@ -342,9 +342,9 @@ services:
       - "8090:8090"
     healthcheck:
       test: "curl --fail --silent localhost:8090/actuator/health/readiness | grep UP || exit 1"
-      interval: 10s
+      interval: 20s
       timeout: 5s
-      retries: 10
+      retries: 20
       start_period: 10s
 #      loansdb:
 #        condition: service_healthy
@@ -363,9 +363,9 @@ services:
       - "9000:9000"
     healthcheck:
       test: "curl --fail --silent localhost:9000/actuator/health/readiness | grep UP || exit 1"
-      interval: 10s
+      interval: 20s
       timeout: 5s
-      retries: 10
+      retries: 20
       start_period: 10s
 #      cardsdb:
 #        condition: service_healthy
