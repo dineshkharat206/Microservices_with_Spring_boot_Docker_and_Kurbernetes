@@ -41,5 +41,10 @@ datasources:
     url: http://gateway:3100
     jsonData:
       httpHeaderName1: "X-Scope-OrgID"
+      derivedFields:
+        - datasourceUid: tempo
+          matcherRegex: "\\[.+,(.+),.+\\]"
+          name: TraceID
+          url: '$${__value.raw}'
     secureJsonData:
       httpHeaderValue1: "tenant1"
